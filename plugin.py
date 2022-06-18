@@ -1,49 +1,19 @@
 #! /usr/bin/env python3
 
 import math
-import operator
 import re
 import sys
 import zipfile
-from datetime import datetime
 from io import BytesIO
-from os import listdir, path
-from random import choice, randrange
-from textwrap import wrap
+from os import path
 
 import cv2
-import cvlib as cv
-import matplotlib.pyplot as plt
 import numpy as np
-from cvlib.object_detection import draw_bbox
-from matplotlib import pyplot as plt
 from maubot import MessageEvent, Plugin
-from maubot.handlers import command, event
-from mautrix.types import EventType, MessageType, PaginationDirection
+from maubot.handlers import event
+from mautrix.types import EventType, MessageType
 from mautrix.types.event.message import ImageInfo, MediaMessageEventContent
-from PIL import Image, ImageDraw, ImageFont
-from skimage.color import rgb2gray
-from skimage.draw import disk
-from skimage.feature import blob_doh
-from skimage.io import imread, imshow
-from skimage.measure import label, regionprops, regionprops_table
-from skimage.morphology import (
-    area_closing,
-    area_opening,
-    closing,
-    dilation,
-    erosion,
-    opening,
-)
-
-# from skimage.morphology import (
-#    area_closing,
-#    area_opening,
-#    closing,
-#    dilation,
-#    erosion,
-#    opening,
-# )
+from PIL import Image
 
 BASE_PATH = path.dirname(path.realpath(__file__))
 

@@ -10,4 +10,4 @@ It needs to be running when an image is posted (it keeps track of the most recen
 
 ## Requirements
 
-Perryfier depends on Scipy for largest blob detection (so it knows where to put the hat).  You may need some additional shared object files available to your Maubot instance at runtime.
+Perryfier depends on OpenCV to figure out where to put the hat.  Your Maubot instance must have access to the `cv2` (`python-opencv`) Python lib.
