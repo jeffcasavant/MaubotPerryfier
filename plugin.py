@@ -93,7 +93,7 @@ class PerryfierPlugin(Plugin):
 
     def perryfy(self, source, source_bytes):
         self.log.debug("Perryfying image")
-        (obj_x, obj_y), object_radius = self.detect_object(source)
+        (obj_x, obj_y), object_radius = self.detect_object(source_bytes)
 
         img = Image.open(source)
 
@@ -123,7 +123,7 @@ class PerryfierPlugin(Plugin):
         return img
 
     async def send_image(self, evt, img, noun=None):
-        self.log("Sending image")
+        self.log.debug("Sending image")
         file = BytesIO()
         img.save(file, format="png")
         mxc_uri = await self.client.upload_media(file.getvalue(), mime_type="image/png")

@@ -10,4 +10,4 @@ It needs to be running when an image is posted (it keeps track of the most recen
 
 ## Requirements
 
-Perryfier depends on OpenCV to figure out where to put the hat.  Your Maubot instance must have access to the `cv2` (`python-opencv`) Python lib.
+Perryfier depends on OpenCV to figure out where to put the hat.  Your Maubot instance must have access to the `python-opencv` Python lib.  I have a custom built `maubot` docker container at `jeffcasavant/maubot-maubot` which you're welcome to use.  It uses a [slightly modified version of the official Maubot Dockerfile.](https://github.com/jeffcasavant/public-containers/blob/master/maubot-maubot/Dockerfile)
