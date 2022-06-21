@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "casavant.jeff.perryfier"
-version = "1.0.0"
+version = "1.0.1"
 description = "Maubot plugin for adding a brown fedora to existing pictures"
 authors = ["Jeff Casavant <jeff.casavant@gmail.com>"]
 license = "MIT"

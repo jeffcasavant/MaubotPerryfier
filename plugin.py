@@ -11,6 +11,7 @@ import cv2
 import numpy as np
 from maubot import MessageEvent, Plugin
 from maubot.handlers import event
+from mautrix.crypto.attachments import decrypt_attachment, encrypt_attachment
 from mautrix.types import EventType, MessageType
 from mautrix.types.event.message import ImageInfo, MediaMessageEventContent
 from PIL import Image
@@ -62,7 +63,14 @@ class PerryfierPlugin(Plugin):
             return
 
         img_evt = await self.client.get_event(room_id, image_event_map[room_id])
-        source_img_bytes = await self.client.download_media(img_evt.content.url)
+        if img_evt.content.url:
+            source_img_bytes = await self.client.download_media(img_evt.content.url)
+        else:
+            encrypted_file = img_evt.content.file
+            source_img_encrypted = await self.client.download_media(encrypted_file.url)
+            source_img_bytes = decrypt_attachment(
+                source_img_encrypted, encrypted_file.key.key, encrypted_file.hashes["sha256"], encrypted_file.iv
+            )
 
         source_img = BytesIO()
         source_img.write(source_img_bytes)
