@@ -18,7 +18,7 @@ from PIL import Image
 
 BASE_PATH = path.dirname(path.realpath(__file__))
 
-question_regex = re.compile(r"an? (?P<noun>.+)\?")
+question_regex = re.compile(r"[Aa]n? (?P<noun>.+)\?")
 command_regex = re.compile(r"\!perryfy ?(?P<noun>.*)")
 
 image_event_map = {}
