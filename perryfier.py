@@ -2,7 +2,6 @@
 
 import math
 import re
-import sys
 import zipfile
 from io import BytesIO
 from os import path
@@ -11,7 +10,7 @@ import cv2
 import numpy as np
 from maubot import MessageEvent, Plugin
 from maubot.handlers import event
-from mautrix.crypto.attachments import decrypt_attachment, encrypt_attachment
+from mautrix.crypto.attachments import decrypt_attachment
 from mautrix.types import EventType, MessageType
 from mautrix.types.event.message import ImageInfo, MediaMessageEventContent
 from PIL import Image
@@ -33,7 +32,7 @@ def load_resource(from_path: str):
 
 
 class PerryfierPlugin(Plugin):
-    @event.on(EventType.ROOM_MESSAGE)
+    @event.on(EventType.ROOM_MESSAGE)  # pylint: disable=no-member
     async def handler(self, evt: MessageEvent) -> None:
         content = evt.content
         room_id = evt.room_id
